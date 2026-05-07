@@ -1,3 +1,4 @@
+[![Actions App CI](https://github.com/AnonimProgrammer/MAY-7-github-actions/actions/workflows/ci.yml/badge.svg)](https://github.com/AnonimProgrammer/MAY-7-github-actions/actions/workflows/ci.yml)
 
 # Lab 6.07: CI with GitHub Actions
 
