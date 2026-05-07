@@ -1,3 +1,4 @@
+[![My First CI](https://github.com/TheGlitch26/MAY-7-github-actions/actions/workflows/ci.yml/badge.svg)](https://github.com/TheGlitch26/MAY-7-github-actions/actions/workflows/ci.yml)
 
 # Lab 6.07: CI with GitHub Actions
 
@@ -50,8 +51,9 @@ actions/
 
 The app exposes a single endpoint:
 
+
 | Method | Path       | Description          |
-|--------|------------|----------------------|
+| ------ | ---------- | -------------------- |
 | GET    | `/tvshows` | Returns all TV shows |
 
 ---
@@ -67,7 +69,6 @@ GitHub Actions only looks for workflow files in one specific location.
    In your project root, create the `.github/workflows/` directory.
 
    **Hint**: The `-p` flag creates parent directories as needed (macOS/Linux). On Windows use `mkdir .github\workflows`.
-
 2. **Verify Structure**
 
    ```
@@ -103,35 +104,39 @@ jobs:
 **Workflow Requirements**:
 
 **Metadata:**
+
 - **Name**: Give your workflow a descriptive name (e.g., "Actions App CI")
 
 **Triggers (under `on:`):**
+
 - Run on pushes to the `main` branch
 - Run on pull requests targeting the `main` branch
 
 **Job Configuration:**
+
 - Single job named `build-and-test`
 - Runs on `ubuntu-latest`
 
 **Steps (in this exact order):**
 
 1. **Checkout the code**
-   - Use: `actions/checkout@v4`
 
+   - Use: `actions/checkout@v4`
 2. **Set up JDK 17**
+
    - Use: `actions/setup-java@v4`
    - Required parameters:
      - `distribution`: `'temurin'`
      - `java-version`: `'17'`
-
 3. **Cache Maven dependencies**
+
    - Use: `actions/cache@v4`
    - Required parameters:
      - `path`: `~/.m2/repository`
      - `key`: `${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}`
      - `restore-keys`: `${{ runner.os }}-maven-`
-
 4. **Build and test**
+
    - Run: `mvn clean verify`
    - No database service container is needed. The app uses H2 in-memory, which is on the classpath
 
@@ -150,6 +155,7 @@ jobs:
 3. Click into the run → click the `build-and-test` job → expand each step
 
 **What to look for:**
+
 - **Cache Maven dependencies**: says "Cache not found" on first run (expected)
 - **Build and test**: all tests green, `BUILD SUCCESS`
 
@@ -162,12 +168,11 @@ Proving that CI catches failures is as important as seeing it pass.
 1. **Introduce a Test Failure**
 
    Open `TvShowControllerTest.java` and change an assertion to use a wrong value:
+
    ```java
    .andExpect(jsonPath("$[0].title").value("Wrong Title"))
    ```
-
 2. **Commit and push:** watch the Actions tab show a red ✗
-
 3. **Inspect the Failure:** expand the **Build and test** step and read the assertion mismatch in the Maven output
 
 ---
@@ -214,15 +219,15 @@ Cache invalidates automatically when `pom.xml` changes (the key includes `hashFi
 
 **Checklist:**
 
-- [ ] File exists at `.github/workflows/ci.yml`
-- [ ] Workflow has a descriptive name
-- [ ] Checkout uses `actions/checkout@v4`
-- [ ] JDK setup uses `actions/setup-java@v4` with `distribution: 'temurin'` and `java-version: '17'`
-- [ ] Cache step uses `actions/cache@v4` with correct `path`, `key`, and `restore-keys`
-- [ ] Build step runs `mvn clean verify`
-- [ ] All three triggers present: `push`, `pull_request`, `workflow_dispatch`
-- [ ] YAML indentation is consistent (2 spaces per level)
-- [ ] Pipeline runs successfully end-to-end
+- [ ]  File exists at `.github/workflows/ci.yml`
+- [ ]  Workflow has a descriptive name
+- [ ]  Checkout uses `actions/checkout@v4`
+- [ ]  JDK setup uses `actions/setup-java@v4` with `distribution: 'temurin'` and `java-version: '17'`
+- [ ]  Cache step uses `actions/cache@v4` with correct `path`, `key`, and `restore-keys`
+- [ ]  Build step runs `mvn clean verify`
+- [ ]  All three triggers present: `push`, `pull_request`, `workflow_dispatch`
+- [ ]  YAML indentation is consistent (2 spaces per level)
+- [ ]  Pipeline runs successfully end-to-end
 
 ---
 
@@ -246,6 +251,7 @@ Add a build status badge to the top of this README.
 3. Commit and push
 
 **Example:**
+
 ```markdown
 ![CI](https://github.com/username/actions/workflows/Actions%20App%20CI/badge.svg)
 ```
