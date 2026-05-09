@@ -1,0 +1,38 @@
+services:
+  app:
+    build: .
+    container_name: devops-app
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - devops-network
+
+  db:
+    image: mysql:8
+    container_name: devops-db
+    env_file:
+      - .env
+    volumes:
+      - devops-db-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - devops-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  devops-network:
+    driver: bridge
+
+volumes:
+  devops-db-data:
