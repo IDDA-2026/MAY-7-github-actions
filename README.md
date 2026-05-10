@@ -1,4 +1,4 @@
-
+[![Actions App CI](https://github.com/shebnem-m/MAY-7-github-actions/actions/workflows/ci.yml/badge.svg)](https://github.com/shebnem-m/MAY-7-github-actions/actions/workflows/ci.yml)
 # Lab 6.07: CI with GitHub Actions
 
 > **Duration**: 2h | **Type**: Lab
@@ -255,3 +255,6 @@ The badge updates in real-time with each pipeline run.
 # Super extra bonus (if you get bored 😅)
 
 Check the [README-BONUS.md](README-BONUS.md) and complete as many exercises as you can.
+
+
+<img width="938" height="407" alt="lab-3" src="https://github.com/user-attachments/assets/f087ffeb-9828-45f3-85d3-07a6c55735ec" />
