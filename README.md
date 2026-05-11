@@ -1,4 +1,5 @@
-
+[![LabMoviesApp CI](https://github.com/lalocchi/MAY-7-github-actions/actions/workflows/ci.yml/badge.svg)](https://github.com/lalocchi/MAY-7-github-actions/actions/workflows/ci.yml)
+(This link is here (on top of readme) because of bonus task)
 # Lab 6.07: CI with GitHub Actions
 
 > **Duration**: 2h | **Type**: Lab
@@ -153,6 +154,9 @@ jobs:
 - **Cache Maven dependencies**: says "Cache not found" on first run (expected)
 - **Build and test**: all tests green, `BUILD SUCCESS`
 
+^_^
+I did it here is the screenshot of it!
+![img.png](img.png)
 ---
 
 ### Task 4: Break It on Purpose
@@ -168,8 +172,14 @@ Proving that CI catches failures is as important as seeing it pass.
 
 2. **Commit and push:** watch the Actions tab show a red ✗
 
+^_^
+Here is the commit:
+![img_1.png](img_1.png)
 3. **Inspect the Failure:** expand the **Build and test** step and read the assertion mismatch in the Maven output
 
+![img_2.png](img_2.png)
+Here we can see the error :
+![img_3.png](img_3.png)
 ---
 
 ### Task 5: Fix It
@@ -178,7 +188,9 @@ Proving that CI catches failures is as important as seeing it pass.
 2. Commit and push the fix
 3. Watch the pipeline go green again
 4. **Take a screenshot** of the Actions tab showing at least one red ✗ and one green ✓ run
-
+^_^
+Here is the screenshot of the fixed version :
+![img_4.png](img_4.png)
 ---
 
 ### Task 6: Add Manual Trigger
@@ -205,6 +217,9 @@ On any run after the first:
 - Expand the **Cache Maven dependencies** step
 - Confirm it says "Cache restored from key: ..." rather than "Cache not found"
 - Compare build durations: first run (~60–90 s) vs. cached runs (~30–45 s)
+For comparison first image is after workflow dispatch,second is before.
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
 
 Cache invalidates automatically when `pom.xml` changes (the key includes `hashFiles('**/pom.xml')`).
 
