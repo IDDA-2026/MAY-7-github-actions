@@ -1,0 +1,37 @@
+name: Deploy   to Render
+on:
+  workflow_run:
+    workflows:  ["Actions App CI"]
+    types: [completed]
+    branches: [main]
+jobs:
+  deploy:
+    runs-on:  ubuntu-latest
+
+    if: github.event.workflow_run.conclusion == 'success'
+    steps:
+      - name: Trigger  Render deploy
+
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+
+      - name: Deployment summary
+        run: echo "Render deployment triggered successfully! Check Render dashboard for build status." >> $GITHUB_STEP_SUMMARY
+      #Bonus
+
+      - name: Verify Live API Health
+        run: |
+            echo "Waiting 60 seconds to give Render time to build..."
+            sleep 60
+            for i in {1..10}; do
+                        echo "Health check attempt $i of 10..."
+                        if curl -s https://may-7-github-actions.onrender.com/tvshows | grep -q "Breaking Bad"; then
+                                  echo " Health check passed! The API is live and serving data."
+                                  exit 0
+                                fi
+          
+                                echo "API not ready yet. Waiting 15 seconds before trying again..."
+                                sleep 15
+                              done
+          
+                              echo " Health check failed! The API never responded with the correct data."
+                              exit 1

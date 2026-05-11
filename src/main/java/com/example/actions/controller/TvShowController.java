@@ -22,4 +22,9 @@ public class TvShowController {
     public List<TvShow> getAll() {
         return tvShowService.getAllTvShows();
     }
+
+    @GetMapping("/")
+    public String welcome() {
+        return "Welcome to TV Show API! Please navigate to /tvshows to view the database.";
+    }
 }
