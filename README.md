@@ -171,8 +171,14 @@ Proving that CI catches failures is as important as seeing it pass.
 
 2. **Commit and push:** watch the Actions tab show a red ✗
 
+^_^
+Here is the commit:
+![img_1.png](img_1.png)
 3. **Inspect the Failure:** expand the **Build and test** step and read the assertion mismatch in the Maven output
 
+![img_2.png](img_2.png)
+Here we can see the error :
+![img_3.png](img_3.png)
 ---
 
 ### Task 5: Fix It
@@ -181,6 +187,7 @@ Proving that CI catches failures is as important as seeing it pass.
 2. Commit and push the fix
 3. Watch the pipeline go green again
 4. **Take a screenshot** of the Actions tab showing at least one red ✗ and one green ✓ run
+
 
 ---
 
