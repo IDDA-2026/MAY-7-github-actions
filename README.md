@@ -1,4 +1,5 @@
-
+[![LabMoviesApp CI](https://github.com/lalocchi/MAY-7-github-actions/actions/workflows/ci.yml/badge.svg)](https://github.com/lalocchi/MAY-7-github-actions/actions/workflows/ci.yml)
+(This link is here (on top of readme) because of bonus task)
 # Lab 6.07: CI with GitHub Actions
 
 > **Duration**: 2h | **Type**: Lab
