@@ -1,3 +1,6 @@
+[![Actions App CI](https://github.com/gurban200OK/MAY-7-github-actions/actions/workflows/ci.yml/badge.svg)](https://github.com/gurban200OK/MAY-7-github-actions/actions/workflows/ci.yml)
+The link is here.
+
 
 # Lab 6.07: CI with GitHub Actions
 
