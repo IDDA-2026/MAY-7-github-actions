@@ -216,6 +216,9 @@ On any run after the first:
 - Expand the **Cache Maven dependencies** step
 - Confirm it says "Cache restored from key: ..." rather than "Cache not found"
 - Compare build durations: first run (~60–90 s) vs. cached runs (~30–45 s)
+For comparison first image is after workflow dispatch,second is before.
+![img_5.png](img_5.png)
+![img_6.png](img_6.png)
 
 Cache invalidates automatically when `pom.xml` changes (the key includes `hashFiles('**/pom.xml')`).
 
